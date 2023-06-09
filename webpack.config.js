@@ -1,7 +1,5 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//
 
 module.exports = {
   mode: 'development',
@@ -25,50 +23,30 @@ module.exports = {
         test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/i,
         type: 'asset/resource',
         generator: {
-            //filename: 'fonts/[name]-[hash][ext][query]'
-            filename: 'fonts/[name][ext][query]'
-        }
-    },
-    
-    // Rule for processing .css and .scss files
-    {
-        test: /\.s?css$/,
-        use: [
-            // Save the CSS as a separate file to allow caching                            
-            MiniCssExtractPlugin.loader,
-            {
-                // Translate CSS into CommonJS modules
-                loader: 'css-loader',
-            },
-            {
-                // Run postcss actions
-                loader: 'postcss-loader',
-                options: {
-                    postcssOptions: {
-                        plugins: [
-                            function () {
-                                return [ require('autoprefixer') ];
-                            }
-                        ],
-                    },
-                },
-            },
-            {
-                loader: 'sass-loader',
-                options: {
-                    sassOptions: {
-                        outputStyle: "compressed",
-                    }
-                }
-            }
-        ],
-    },
-      
+          // filename: 'fonts/[name]-[hash][ext][query]'
+          filename: 'fonts/[name][ext][query]',
+        },
+      },
+
+      // Rule for processing .css and .scss files
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        include: path.resolve(__dirname, './node_modules/bootstrap-icons/font/fonts'),
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'webfonts',
+            publicPath: '../webfonts',
+          },
+        },
+      },
+
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: './src/index.html',
+      template: './src/index.html',
     }),
   ],
   devtool: 'inline-source-map',
