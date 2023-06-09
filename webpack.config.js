@@ -23,12 +23,9 @@ module.exports = {
         test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/i,
         type: 'asset/resource',
         generator: {
-          // filename: 'fonts/[name]-[hash][ext][query]'
           filename: 'fonts/[name][ext][query]',
         },
       },
-
-      // Rule for processing .css and .scss files
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         include: path.resolve(__dirname, './node_modules/bootstrap-icons/font/fonts'),
@@ -53,7 +50,4 @@ module.exports = {
   devServer: {
     static: './dist',
   },
-//   optimization: {
-//     runtimeChunk: 'single',
-//   },
 };
