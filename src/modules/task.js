@@ -35,6 +35,16 @@ export default class Task {
       this.description = newDescription;
       updateTask(this.element.id, { description: this.description });
     });
+    // Checkbox EventListener
+    this.element.taskItemCheck.addEventListener('change', () => {
+      if (this.element.root.childNodes[1].checked) {
+        updateTask(this.element.id, { completed: true });
+        this.element.taskItemText.classList.add('disable');
+      } else {
+        updateTask(this.element.id, { completed: false });
+        this.element.taskItemText.classList.remove('disable');
+      }
+    });
   }
 
     static createRoot = () => {

@@ -1,10 +1,14 @@
 import './style.css';
-import { populateTask, renderTask, checkTextContent } from './modules/viewFunction.js';
+import {
+  populateTask, renderTask, checkTextContent, removeCompletedTask, disableBtnAllClear,
+} from './modules/viewFunction.js';
 
 const taskList = document.querySelector('.tasks_list');
+const btnAllClearChecked = document.querySelector('.btn_clear_all_completed_tasks');
 
 window.onload = () => {
   renderTask(taskList);
+  disableBtnAllClear(btnAllClearChecked);
 };
 
 // Add a task listener
@@ -15,6 +19,7 @@ btnAddTask.addEventListener('click', () => {
   if (description) {
     populateTask(description, taskList);
     inputInsertTask.value = '';
+    disableBtnAllClear(btnAllClearChecked);
   }
 });
 
@@ -22,5 +27,13 @@ btnAddTask.addEventListener('click', () => {
 taskList.addEventListener('click', (e) => {
   if (e.target.classList.contains('trash') || e.target.parentElement.classList.contains('trash')) {
     renderTask(taskList);
+    disableBtnAllClear(btnAllClearChecked);
   }
+});
+
+// Clear all checked tasks
+btnAllClearChecked.addEventListener('click', () => {
+  removeCompletedTask();
+  renderTask(taskList);
+  disableBtnAllClear(btnAllClearChecked);
 });
