@@ -4,6 +4,7 @@ const saveData = (tasks) => {
 
 const loadData = () => {
     const tasks = JSON.parse(localStorage.getItem("tasks_data"))||[]
+    return tasks
 }
 
 const findTask = (idTask) => {
@@ -11,7 +12,7 @@ const findTask = (idTask) => {
     const task = dataTask.find((task) => (task.element.id === idTask))
     if(!task) {
         throw new Error("task doesn't exist");
-        return
+        return {}
     }
  return task
 }
@@ -24,14 +25,14 @@ const addTask = (task) => {
 
 const deleteTask = (idTask) => {
     const dataTask = loadData()
-    const newDataTask = dataTask.filter((task)=>task.element.id === idTask)
+    const newDataTask = dataTask.filter((task)=>task.element.id !== idTask)
     saveData(newDataTask)
 }
 
 const updateTask = (idTask,newContent) => {
     const dataTask = loadData()
     const task = dataTask.find((task) => (task.element.id === idTask))
-    task.element.description = newContent.description
+    task.description = newContent.description
     saveData(dataTask)
 }
 
