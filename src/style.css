@@ -4,6 +4,7 @@
   --skyGreen: #087474f3;
   --skyBeigeV2: #90918cf3;
   --white: #fff;
+  --colorDisable: #414240f3;
 }
 
 * {
@@ -93,4 +94,9 @@ header {
 
 .btn_clear_all_completed_tasks:active {
   color: var(--white);
+}
+
+.btn_clear_all_completed_tasks:disabled {
+  color: var(--colorDisable);
+  cursor: none;
 }

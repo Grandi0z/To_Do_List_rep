@@ -44,4 +44,21 @@ const checkTextContent = (content) => {
   return content;
 };
 
-export { populateTask, renderTask, checkTextContent };
+const removeCompletedTask = () => {
+  const dataTask = loadData();
+  const newDataTask = dataTask.filter((task) => task.completed !== true);
+  saveData(newDataTask);
+};
+
+const disableBtnAllClear = (btn) => {
+  const taskData = loadData();
+  if (taskData.length > 0) {
+    btn.removeAttribute('disabled');
+  } else {
+    btn.setAttribute('disabled', 'disabled');
+  }
+};
+
+export {
+  populateTask, renderTask, checkTextContent, removeCompletedTask, disableBtnAllClear,
+};

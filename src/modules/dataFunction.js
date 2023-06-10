@@ -22,7 +22,11 @@ const deleteTask = (idTask) => {
 const updateTask = (idTask, newContent) => {
   const dataTask = loadData();
   const task = dataTask.find((task) => (task.element.id === idTask));
-  task.description = newContent.description;
+  if (newContent.description) {
+    task.description = newContent.description;
+  } else if (newContent.completed || !newContent.completed) {
+    task.completed = newContent.completed;
+  }
   saveData(dataTask);
 };
 
