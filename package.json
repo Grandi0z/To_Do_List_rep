@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist",
     "start": "webpack serve --open",
     "build": "webpack"
   },
@@ -15,6 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage":"https//grandi0z.github.io/To_Do_List_g"
   "bugs": {
     "url": "https://github.com/Grandi0z/To_Do_List_rep/issues"
   },
@@ -48,6 +49,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
+    "gh-pages": "^5.0.0",
     "lodash": "^4.17.21"
   }
 }
