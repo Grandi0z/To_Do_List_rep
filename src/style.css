@@ -100,3 +100,7 @@ header {
   color: var(--colorDisable);
   cursor: none;
 }
+
+.disable {
+  text-decoration: line-through red;
+}
