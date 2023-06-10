@@ -54,6 +54,10 @@ header {
   opacity: 0.5;
 }
 
+.hidden {
+  display: none;
+}
+
 /* task_item */
 
 .task_item {
@@ -62,7 +66,6 @@ header {
   align-items: baseline;
   width: 100%;
   background-color: var(--skyBeigeV2);
-  border-bottom: #eef1f1f3 0.1rem solid;
 }
 
 .task_item_btn {
@@ -76,12 +79,8 @@ header {
   opacity: 0.7;
 }
 
-.tast_item_btn_trash {
-  display: none;
-}
-
 .btn_clear_all_completed_tasks {
-  width: 100%;
+  width: 99%;
   box-sizing: content-box;
   padding: 0.6rem 0;
   margin: 0;
