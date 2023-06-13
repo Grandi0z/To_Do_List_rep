@@ -24,7 +24,7 @@ const updateTask = (idTask, newContent) => {
   const task = dataTask.find((task) => (task.element.id === idTask));
   if (newContent.description) {
     task.description = newContent.description;
-    //if completed === true or === false
+    // if completed === true or === false
   } else if (newContent.completed || !newContent.completed) {
     task.completed = newContent.completed;
   }
