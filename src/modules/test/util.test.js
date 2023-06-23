@@ -1,4 +1,4 @@
-import {localStorageMock, addTask, deleteTask} from "./util.js"
+import {localStorageMock, addTask, deleteTask, removeCompletedTask} from "./util.js"
 import Task from "../task.js"
 
 jest.mock('../task.js')

@@ -28,6 +28,24 @@ const deleteTask = (idTask,parent=false) => {
   }
 };
 
+const updateTask = (idTask, newContent) => {
+  const dataTask = localStorageMock.getItem()
+  const task = dataTask.find((task) => (task.id === idTask));
+  if (newContent.description) {
+    task.description = newContent.description;
+    // if completed === true or === false
+  } else if (newContent.completed || !newContent.completed) {
+    task.completed = newContent.completed;
+  }
+  localStorageMock.setItem("task",dataTask);
+};
 
-export {localStorageMock, addTask, deleteTask}
+const removeCompletedTask = () => {
+  const dataTask = localStorageMock.getItem()
+  const newDataTask = dataTask.filter((task) => task.completed !== true);
+  localStorageMock.setItem("task",newDataTask);
+};
+
+
+export {localStorageMock, addTask, deleteTask, updateTask, removeCompletedTask}
 
