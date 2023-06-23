@@ -29,19 +29,17 @@ describe("Edit description, update completed",()=>{
      localStorageMock.setItem('task', []);
     });
     it("clear all completed tasks",()=>{
-        // const task1 = new Task()
-        // const task2 = new Task()
-        // const task3 = new Task()
-        // task1.description = "task 1"
-        // task2.description = "task 2"
-        // task3.description = "task 3"
-        // task1.completed = false 
-        // task2.completed = true 
-        // task3.completed = true   
-        // addTask(task1);addTask(task2);addTask(task3);
-        // removeCompletedTask()
-        // expect(localStorageMock.setItem.mock.calls[0][1]).toEqual([{"completed": false,"description": "task 1"}])
+        const task1 = new Task()
+        const task2 = new Task()
+        const task3 = new Task()
+        task1.description = "task 1"
+        task2.description = "task 2"
+        task3.description = "task 3"
+        task1.completed = false 
+        task2.completed = true 
+        task3.completed = true   
+        addTask(task1);addTask(task2);addTask(task3);
+        removeCompletedTask()
+        expect(localStorageMock.setItem.mock.calls[0][1]).toEqual([{"completed": false,"description": "task 1"}])
     });
-    
-    
-  })
+})
