@@ -1,5 +1,5 @@
 const localStorageMock = {
-   store:{},
+   store:[],
    clear:jest.fn(),
    getItem:jest.fn().mockReturnValue([]),
    setItem:jest.fn(function(key, value) {return this.store[key] = String(value)}),
@@ -28,11 +28,15 @@ const deleteTask = (idTask,parent=false) => {
   }
 };
 
-const updateTask = (idTask, newContent) => {
+const updateTask = (idTask, newContent,parent=false) => {
   const dataTask = localStorageMock.getItem()
   const task = dataTask.find((task) => (task.id === idTask));
   if (newContent.description) {
     task.description = newContent.description;
+    if(parent){
+      const liElt = document.getElementById(idTask)
+      liElt.innerHTML = newContent.description
+    }
     // if completed === true or === false
   } else if (newContent.completed || !newContent.completed) {
     task.completed = newContent.completed;
