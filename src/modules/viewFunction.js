@@ -11,7 +11,7 @@ const addTaskView = (task, parent) => {
   parent.appendChild(task.element.root);
 };
 
-const renderTask = (parent) => {
+const renderTasks = (parent) => {
   // 1st empty the container
   parent.innerHTML = '';
   const arrTask = loadData();
@@ -24,7 +24,7 @@ const renderTask = (parent) => {
     newArrTask.push(newTask);
     addTaskView(newTask, parent);
   });
-  // task id changes when we renderTask()
+  // task id changes when we renderTasks()
   // to save the right id we restore localStorage
   saveData(newArrTask);
 };
@@ -60,5 +60,5 @@ const disableBtnAllClear = (btn) => {
 };
 
 export {
-  populateTask, renderTask, checkTextContent, removeCompletedTask, disableBtnAllClear,
+  populateTask, renderTasks, checkTextContent, removeCompletedTask, disableBtnAllClear,
 };
