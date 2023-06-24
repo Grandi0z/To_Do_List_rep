@@ -41,6 +41,14 @@ const updateTask = (idTask, newContent, parent = false) => {
     // if completed === true or === false
   } else if (newContent.completed || !newContent.completed) {
     task.completed = newContent.completed;
+    if (parent) {
+      const checkBox = document.getElementById(idTask);
+      if (newContent.completed) {
+        checkBox.setAttribute('checked', true);
+      } else {
+        checkBox.removeAttribute('checked');
+      }
+    }
   }
   localStorageMock.setItem('task', dataTask);
 };

@@ -61,4 +61,6 @@ describe('DOM manipulation', () => {
     updateTask('task1', { description: 'Task_1.0' }, container);
     expect(liElt.innerHTML).toContain('Task_1.0');
   });
+
+  
 });
