@@ -17,7 +17,7 @@ const addTask = (task,parent=false)=>{
   }
   
 }
-//use task instead of taskId because there is no id in the instances of the mocking class Task
+
 const deleteTask = (idTask,parent=false) => {
   const dataTask = localStorageMock.getItem()
   const newDataTask = dataTask.filter((task) => task.id !== idTask);

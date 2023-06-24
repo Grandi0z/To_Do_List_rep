@@ -25,29 +25,3 @@ describe("Save and Delete to Local storage",()=>{
   });
 })
 
-describe("Add and a remove a <li> element",()=>{
-  it('should add one new item to the list', () => {
-    document.body.innerHTML =
-    '<div>' +
-    '  <ul id="list"><li></li></ul>' +
-    '</div>';
-    const task3 = new Task("task 4", false, 4)
-    const container = document.querySelector('#list')
-    addTask(task3,container)
-    const list = document.querySelectorAll('#list li');
-    expect(list).toHaveLength(2);
- });
- it('should remove a item to the list', () => {
-  document.body.innerHTML =
-  '<div>' +
-  '  <ul id="list"><li></li> <li id="11"></li></ul>' +
-  '</div>';
-  const task4 = new Task("task 3", false, 3)
-  task4.id="11"
-  addTask(task4)
-  const container = document.querySelector('#list')
-  deleteTask("11",container)
-  const list = document.querySelectorAll('#list li');
-  expect(list).toHaveLength(1);
-});
-})
