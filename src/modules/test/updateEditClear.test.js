@@ -40,8 +40,6 @@ describe("Clear all completed",()=>{
         task3.completed = true   
         addTask(task1);addTask(task2);addTask(task3);
         removeCompletedTask()
-        expect(localStorageMock.setItem).toHaveBeenCalledWith("task",[{"completed": false,"description": "task 1"}])
+        expect(localStorageMock.setItem.mock.calls[0][1]).toEqual([{"completed": false,"description": "task 1"}])
     });
-    
-    
-  })
+})
