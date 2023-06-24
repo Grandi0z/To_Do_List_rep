@@ -1,5 +1,5 @@
 import {
-  localStorageMock, addTask, deleteTask, removeCompletedTask,
+  localStorageMock, addTask, deleteTask,
 } from './util.js';
 import Task from '../task.js';
 

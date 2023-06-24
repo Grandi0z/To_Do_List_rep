@@ -43,3 +43,22 @@ describe('Clear all completed', () => {
     expect(localStorageMock.setItem).toHaveBeenCalledWith('task', [{ completed: false, description: 'task 1' }]);
   });
 });
+
+describe('DOM manipulation', () => {
+  afterEach(() => {
+    localStorageMock.setItem('task', []);
+  });
+  it('Should edit task description in a <li> element', () => {
+    document.body.innerHTML = '<div>'
+      + '  <ul id="list"><li id="task1">Task_1</li></ul>'
+      + '</div>';
+    const container = document.querySelector('#list');
+    const liElt = document.getElementById('task1');
+    const task1 = new Task();
+    task1.description = 'Task_1';
+    task1.id = 'task1';
+    addTask(task1);
+    updateTask('task1', { description: 'Task_1.0' }, container);
+    expect(liElt.innerHTML).toContain('Task_1.0');
+  });
+});
