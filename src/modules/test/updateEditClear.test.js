@@ -61,4 +61,30 @@ describe('DOM manipulation', () => {
     updateTask('task1', { description: 'Task_1.0' }, container);
     expect(liElt.innerHTML).toContain('Task_1.0');
   });
+  it('Should check and the box', () => {
+    document.body.innerHTML = '<div id="list">'
+      + '  <input type="checkbox" id="task14"  value="task 1">'
+      + '</div>';
+    const container = document.querySelector('#list');
+    const chElt = document.getElementById('task14');
+    const task14 = new Task();
+    task14.completed = false;
+    task14.id = 'task14';
+    addTask(task14);
+    updateTask('task14', { completed: true }, container);
+    expect(chElt.checked).toBe(true);
+  });
+  it('Should uncheck and the box', () => {
+    document.body.innerHTML = '<div id="list">'
+      + '  <input type="checkbox" id="task14"  value="task 1" checked>'
+      + '</div>';
+    const container = document.querySelector('#list');
+    const chElt = document.getElementById('task14');
+    const task14 = new Task();
+    task14.completed = true;
+    task14.id = 'task14';
+    addTask(task14);
+    updateTask('task14', { completed: false }, container);
+    expect(chElt.checked).toBe(false);
+  });
 });
